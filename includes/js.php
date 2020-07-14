@@ -32,13 +32,6 @@
 <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
-<!-- data table -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables-responsive/js/datatables.responsive.min.js"></script>
-<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<!-- daterangepicker -->
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
@@ -62,6 +55,22 @@
     document.querySelector('.form-logout').addEventListener('click', ()=>{
         console.log('hahaha')
         document.querySelector("#form-logout").submit();
+    })
+</script>
+<!-- datepicker -->
+<script type="text/javascript">
+    $(function(){
+        $("#filterDate").daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+        $('#filterDate').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD') + ' s/d ' + picker.endDate.format('YYYY-MM-DD'));
+            $("#start").val(picker.startDate.format('YYYY-MM-DD'));
+            $("#end").val(picker.endDate.format('YYYY-MM-DD'));
+        });
     })
 </script>
 </body>
