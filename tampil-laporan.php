@@ -13,14 +13,17 @@ include('includes/sidebar.php');
 include 'koneksi.php';
 $ambildata = "SELECT * FROM tb_saldo";
 $hasil = mysqli_query($koneksi_db, $ambildata);
+
+if ($_GET['start_date'] && $_GET['end_date'])
+{
+    $start = $_GET['start_date'];
+    $end   = $_GET['end_date'];
+    $ambildata = "SELECT * FROM tb_saldo where tanggal BETWEEN '$start' AND '$end'";
+    $hasil = mysqli_query($koneksi_db, $ambildata);
+}
+
 ?>
-<script  type="text/javascript">
-    $(document).ready(function(){
-        $('.dateFilter').datepicker({
-            dateFormat: "yy-mm-dd"
-        });
-</script>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -43,20 +46,61 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
     <div class="card">
         <div class="card-header">
             <div class="col-sm-15 text-left">
-                <div class="card-body">
-                <h5>CARI BERDASARKAN</h5>
-                <label>Periode Tanggal </label> 
-                <div class="col-sm-8"> 
-                <form method='post' action=''>
-                    Start Date <input type='text' class='dateFilter' name='fromDate' value='<?php if(isset($_POST['fromDate'])) echo $_POST['fromDate']; ?>'>
-                
-                    End Date <input type='text' class='dateFilter' name='endDate' value='<?php if(isset($_POST['endDate'])) echo $_POST['endDate']; ?>'>
+            <div class="card-body">
+            <div class="col-sm-8"> 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                Pencarian
+            </button>
+            </div>
+        </div>
+    </div> 
 
-                    <input type='submit' name='but_search' value='Search'>
-                </form>
+    <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Default Modal</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="get">
+                <div class="form-group">
+                    <label for="dateFilter" class="control-label">Filter Tanggal</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="far fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                        <input id="filterDate" type="text" class="form-control" value="" readonly>
+                        <input id="start" type="hidden" name="start_date" class="form-control">
+                        <input id="end" type="hidden" name="end_date" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="akunFilter" class="control-label">Filter Nama Akun</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="far fa-search"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control">
+                    </div>
                 </div>
             </div>
-        </div>     
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Cari</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
     <div class="card">
         <div class="card-header">
             <div class="col-sm-15 text-left">
@@ -69,23 +113,10 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
                                 <th>KETERANGAN</th>
                                 <th>DEBIT</th>
                                 <th>KREDIT</th>
-                                <th>SALDO</th>
                             </tr>
                         </thead>
                         <?php
-                        $data = "SELECT * FROM tb_saldo";
-                        // Date filter
-                        if(isset($_POST['but_search'])){
-                            $fromDate = $_POST['fromDate'];
-                            $endDate = $_POST['endDate'];
-
-                            if(!empty($fromDate) && !empty($endDate)){
-                            $data .= " and date_of_join 
-                                            between '".$fromDate."' and '".$endDate."' ";
-                            }
-                        }
-
-
+                        
                         $id = 0;
                         $saldo = 0;
                         while ($row = mysqli_fetch_array($hasil)) {
@@ -107,9 +138,7 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
                                 echo "<td> Rp." . number_format($row['jumlah'], 2, ",", ".") . "</td>";
                             } else { echo "<td></td>"; }
                             echo "
-                            <td> Rp." . number_format($saldo, 2, ",", ".") . "</td>
                             </tr>
-                            
                             ";
                         }
                         // <td>
@@ -132,22 +161,3 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
     </div>
 
     <?php include("includes/js.php") ?>
-
-    <script>
-        $("#bukubesar").DataTable();
-
-        
-
-        // function setDateRangePicker(input1, input2){  
-        //     $(input1).datetimepicker({    
-        //         format: "YYYY-MM-DD",    useCurrent: false  })  
-        //         $(input1).on("change.datetimepicker", function (e) {    
-        //             $(input2).val("")        
-        //             $(input2).datetimepicker('minDate', e.date);    
-        //             })  
-        //         $(input2).datetimepicker({    
-        //             format: "YYYY-MM-DD",    
-        //             useCurrent: false  
-        //             })
-        // }
-    </script>
