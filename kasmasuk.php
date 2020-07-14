@@ -16,7 +16,7 @@ include("includes/navbar.php");
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard</h1>
+                    <h1 class="m-0 text-dark">INPUT KAS MASUK</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -83,7 +83,6 @@ include("includes/navbar.php");
                         <button type="reset" name="reset" class="btn btn-danger">RESET</button>
 
                         <?php
-                        include 'koneksi.php';
                         if (isset($_POST['submit'])) {
                             $idkas = $_POST['idkas'];
                             $tanggal = $_POST['tanggal'];
@@ -111,6 +110,41 @@ include("includes/navbar.php");
 
                         ?>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-sm-15">
+                <table id="example1" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>KETERANGAN</th>
+                            <th>DEBIT</th>
+                            <th>KREDIT</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    $ambildata = "SELECT * FROM tb_saldo";
+                    $hasil = mysqli_query($koneksi_db, $ambildata);
+                        $id = 0;
+                    while ($row = mysqli_fetch_array($hasil)) {
+                        $id++;
+                        echo "
+                        <tr>
+                        <td>" . $id . "</th>
+                        <td>" . $row['keterangan'] . "</th>";
+                        if ($row['jenis_transaksi'] == 'debit'){
+                            echo "<td> Rp." . number_format($row['jumlah'], 2, ",", ".") . "</td>";
+                        } else { echo "<td></td>"; }
+                        if ($row['jenis_transaksi'] == 'kredit'){
+                            echo "<td> Rp." . number_format($row['jumlah'], 2, ",", ".") . "</td>";
+                        } else { echo "<td></td>"; }
+                        echo "</tr>";
+                    }
+                    ?>
+                </table>
                 </div>
             </div>
         </div>

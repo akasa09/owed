@@ -12,7 +12,7 @@ include("includes/navbar.php");
 <!-- get data untuk update -->
 <?php
 $id_akun = $_GET['id'];
-$ambildata = "SELECT * FROM tb_dataakun WHERE id_akun='$id_akun'";
+$ambildata = "SELECT * FROM tb_dataakun WHERE kode_akun='$id_akun'";
 $hasil = mysqli_query($koneksi_db, $ambildata);
 $array = mysqli_fetch_assoc($hasil);
 
@@ -51,7 +51,7 @@ $array = mysqli_fetch_assoc($hasil);
                                     <div class="input-group-text">
                                         <i class="fas fa-code"></i>
                                     </div>
-                                    <input type="hidden" name="akun" value="<?= $array['id_akun'] ?>">
+                                    <input type="hidden" name="akun" value="<?= $array['kode_akun'] ?>">
                                     <input type="text" class="form-control" name="kode" placeholder="masukan kode akun" value="<?= $array['kode_akun'] ?>">
                                 </div>
                             </div>
@@ -63,7 +63,6 @@ $array = mysqli_fetch_assoc($hasil);
                                     <div class="input-group-text">
                                         <i class="fas fa-code"></i>
                                     </div>
-                                    <input type="hidden" name="akun" value="<?= $array['id_akun'] ?>">
                                     <input type="text" class="form-control" name="nama" placeholder="masukan nama akun" value="<?= $array['nama_akun'] ?>">
                                 </div>
                             </div>
@@ -75,7 +74,7 @@ $array = mysqli_fetch_assoc($hasil);
                                     <div class="input-group-text">
                                         <i class="fas fa-align-left"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="deskripsi" placeholder="masukan klarisikasi akun" value="<?= $array['klarifikasi'] ?>">
+                                    <input type="text" class="form-control" name="klarifikasi" placeholder="masukan klarisikasi akun" value="<?= $array['klarifikasi'] ?>">
                                 </div>
                             </div>
                         </div>

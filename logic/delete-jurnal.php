@@ -3,10 +3,10 @@
     session_start();
     include '../koneksi.php';
     include('../session.php');
-    if (isset($_POST['id_jurnal'])) {
+    if (isset($_POST['kode_akun'])) {
        
-        $id_jurnal = $_POST['id_jurnal'];
-        $query = "DELETE FROM tb_jurnal WHERE id_jurnal='$id_jurnal'";
+        $kode_akun = $_POST['kode_akun'];
+        $query = "DELETE FROM tb_dataakun WHERE kode_akun='$kode_akun'";
         $result = mysqli_query($koneksi_db, $query);
         if (!$result) {
             $_SESSION['pesan'] = 'gagal hapus data';

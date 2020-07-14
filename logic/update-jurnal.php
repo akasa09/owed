@@ -2,12 +2,12 @@
     include '../koneksi.php';
     include('../session.php');
     if (isset($_POST['submit'])) {
-        $kode = $_POST['kode'];
-        $nama = $_POST['nama'];
+        $kode = $_POST['kode_akun'];
+        $nama = $_POST['nama_akun'];
         $klarifikasi = $_POST['klarifikasi'];
        
         // cek apakah kode sudah ada
-        $search = "SELECT * FROM tb_dataakun WHERE kode_akun='$kode', id_akun<> '$id_akun'";
+        $search = "SELECT * FROM tb_dataakun WHERE kode_akun='$kode', id_akun <> '$id_akun'";
         $result = mysqli_query($koneksi_db, $search);
 
         if ($result->num_rows > 0) {
