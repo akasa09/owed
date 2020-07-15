@@ -10,10 +10,10 @@
         $result = mysqli_query($koneksi_db, $query);
         if (!$result) {
             $_SESSION['pesan'] = 'gagal hapus data';
-            header('location: ../tampil-jurnal.php');
+            header('location: ../tampil-akun.php');
         } else {
             $_SESSION['pesan'] = 'berhasil hapus data';
-            header('location: ../tampil-jurnal.php');
+            header('location: ../tampil-akun.php');
         }
     }
 

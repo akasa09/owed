@@ -16,7 +16,7 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
                     <li class="nav-item has-treeview">
-                        <a href="tampil-jurnal.php" class="nav-link">
+                        <a href="tampil-akun.php" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     MENU MASTER

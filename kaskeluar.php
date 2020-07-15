@@ -12,7 +12,7 @@ include("includes/navbar.php");
 
 <!-- get data untuk keterangan -->
 <?php
-$ambildata = "SELECT * FROM tb_jurnal";
+$ambildata = "SELECT * FROM tb_dataakun";
 $hasil = mysqli_query($koneksi_db, $ambildata);
 ?>
 
@@ -64,7 +64,7 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
                                     <?php
                                         while ($row = mysqli_fetch_array($hasil)) {
                                             echo "
-                                            <option value='" . $row['deskripsi'] . "'> [". strtoupper($row['kode_jurnal']) . "] - " . strtoupper($row['deskripsi']) ."
+                                            <option value='" . $row['nama_akun'] . "'> [". strtoupper($row['kode_akun']) . "] - " . strtoupper($row['nama_akun']) ."
                                             </option>";
                                         }
                                     ?>

@@ -9,6 +9,11 @@ include("includes/sidebar.php");
 include("includes/navbar.php");
 ?>
 
+<?php
+$ambildata = "SELECT * FROM tb_dataakun";
+$hasil = mysqli_query($koneksi_db, $ambildata);
+?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -36,7 +41,7 @@ include("includes/navbar.php");
                     <br><br>
                     <form role="form" method="POST" action="kasmasuk.php">
                         <div class="form-group" method="post">
-                            <label>ID KAS</label>
+                            <label>NO TRANSAKSI</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -58,13 +63,21 @@ include("includes/navbar.php");
                             </div>
                         </div>
                         <div class="form-group" method="post">
-                            <label>KETERANGAN</label>
+                            <label>PILIH AKUN</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="keterangan" placeholder="masukan keterangan pakai">
+                                    <select name="keterangan" id="" class="form-control">
+                                    <?php
+                                        while ($row = mysqli_fetch_array($hasil)) {
+                                            echo "
+                                            <option value='" . $row['nama_akun'] . "'> [". strtoupper($row['kode_akun']) . "] - " . strtoupper($row['nama_akun']) ."
+                                            </option>";
+                                        }
+                                    ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -129,6 +142,8 @@ include("includes/navbar.php");
                     $ambildata = "SELECT * FROM tb_saldo";
                     $hasil = mysqli_query($koneksi_db, $ambildata);
                         $id = 0;
+                    $totaldebit = 0;
+                    $totalkredit = 0;
                     while ($row = mysqli_fetch_array($hasil)) {
                         $id++;
                         echo "
@@ -136,14 +151,23 @@ include("includes/navbar.php");
                         <td>" . $id . "</th>
                         <td>" . $row['keterangan'] . "</th>";
                         if ($row['jenis_transaksi'] == 'debit'){
+                            $totaldebit += $row['jumlah'];
                             echo "<td> Rp." . number_format($row['jumlah'], 2, ",", ".") . "</td>";
                         } else { echo "<td></td>"; }
                         if ($row['jenis_transaksi'] == 'kredit'){
+                            $totalkredit += $row['jumlah'];
                             echo "<td> Rp." . number_format($row['jumlah'], 2, ",", ".") . "</td>";
                         } else { echo "<td></td>"; }
                         echo "</tr>";
                     }
                     ?>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" style="text-align:right;">Total</td>
+                            <td>Rp <?= number_format($totaldebit, 2, ",", ".") ?></td>
+                            <td>Rp <?= number_format($totalkredit, 2, ",", ".") ?></td>
+                        </tr>
+                    </tfoot>
                 </table>
                 </div>
             </div>

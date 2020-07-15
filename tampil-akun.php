@@ -29,7 +29,7 @@ include('includes/sidebar.php');
     <div class="card">
         <div class="card-header">
             <div class="col-sm-12 text-left">
-                <a href="setting-jurnal.php"><button type="button" class="btn btn-primary "><i class="fas fa-plus"></i></button>
+                <a href="setting-akun.php"><button type="button" class="btn btn-primary "><i class="fas fa-plus"></i></button>
                 </a>
                 <br><br>
                 <div class="card-body">
@@ -54,11 +54,11 @@ include('includes/sidebar.php');
                             <td>" . $data['nama_akun'] . "</td>
                             <td>" . $data['klarifikasi'] . "</td>
                             <td>
-                            <a href=\"edit-jurnal.php?id=" . $data['kode_akun'] . "\"><i class='fas fa-edit'></i>
+                            <a href=\"edit-akun.php?id=" . $data['kode_akun'] . "\"><i class='fas fa-edit'></i>
                             </a>" . " ||
                              <a class='deleted' href=\"#\" data-link='". $data['kode_akun'] ."'><i class='fas fa-trash-alt'></i></a>
                              " . "
-                            <form id='form_". $data['kode_akun'] ."' action='logic/delete-jurnal.php' method='POST'>
+                            <form id='form_". $data['kode_akun'] ."' action='logic/delete-akun.php' method='POST'>
                                 <input type='hidden' name='kode_akun' value='". $data['kode_akun'] ."' />
                             </form>
                             </td>

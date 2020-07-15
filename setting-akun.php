@@ -31,10 +31,10 @@ include("includes/navbar.php");
                 <div class="col-sm-15">
                     <h2 class="text-center">INPUT DATA AKUN</h2>
                     <hr>
-                    <a href="tampil-jurnal.php"><button type="button" class="btn btn-danger"><i class="fas fa-window-close"></i></button>
+                    <a href="tampil-akun.php"><button type="button" class="btn btn-danger"><i class="fas fa-window-close"></i></button>
                     </a>
                     <br><br>
-                    <form role="form" method="POST" action="logic/create-jurnal.php">
+                    <form role="form" method="POST" action="logic/create-akun.php">
                         <div class="form-group" method="post">
                             <label>KODE AKUN</label>
                             <div class="input-group">

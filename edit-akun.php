@@ -40,10 +40,10 @@ $array = mysqli_fetch_assoc($hasil);
                 <div class="col-sm-15">
                     <h2 class="text-center">EDIT DATA AKUN</h2>
                     <hr>
-                    <a href="tampil-jurnal.php"><button type="button" class="btn btn-danger"><i class="fas fa-window-close"></i></button>
+                    <a href="tampil-akun.php"><button type="button" class="btn btn-danger"><i class="fas fa-window-close"></i></button>
                     </a>
                     <br><br>
-                    <form role="form" method="POST" action="logic/update-jurnal.php">
+                    <form role="form" method="POST" action="logic/update-akun.php">
                         <div class="form-group" method="post">
                             <label>KODE AKUN</label>
                             <div class="input-group">

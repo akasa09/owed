@@ -14,7 +14,7 @@ include 'koneksi.php';
 $ambildata = "SELECT * FROM tb_saldo";
 $hasil = mysqli_query($koneksi_db, $ambildata);
 
-if ($_GET['start_date'] && $_GET['end_date'])
+if (isset($_GET['start_date']) && isset($_GET['end_date']))
 {
     $start = $_GET['start_date'];
     $end   = $_GET['end_date'];

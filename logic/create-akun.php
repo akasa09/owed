@@ -12,17 +12,17 @@
 
         if ($result->num_rows > 0) {
             $_SESSION['pesan'] = 'maaf kode sudah digunakan';
-            header('location: ../setting-jurnal.php');
+            header('location: ../setting-akun.php');
         } else {
             $query = "INSERT INTO tb_dataakun SET kode_akun='$kode', nama_akun='$nama', klarifikasi='$klarifikasi'";
             $result = mysqli_query($koneksi_db, $query);
             if (!$result) {
                 $_SESSION['pesan'] = 'gagal menyimpan data';
-                header('location: ../setting-jurnal.php');
+                header('location: ../setting-akun.php');
             }
 
             $_SESSION['pesan'] = 'berhasil menyimpan data';
-            header('location: ../setting-jurnal.php');
+            header('location: ../setting-akun.php');
         }
         
         

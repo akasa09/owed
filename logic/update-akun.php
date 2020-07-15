@@ -12,17 +12,17 @@
 
         if ($result->num_rows > 0) {
             $_SESSION['pesan'] = 'maaf kode sudah digunakan';
-            header('location: ../setting-jurnal.php?id='.$id_akun);
+            header('location: ../setting-akun.php?id='.$id_akun);
         } else {
             $query = "UPDATE tb_dataakun SET kode_akun='$kode', nama_akun='$nama', klarifikasi='$klarifikasi' WHERE id_akun = '$id_akun'";
             $result = mysqli_query($koneksi_db, $query);
             if (!$result) {
                 $_SESSION['pesan'] = 'gagal update data';
-                header('location: ../setting-jurnal.php?id='.$id_akun);
+                header('location: ../setting-akun.php?id='.$id_akun);
             }
 
             $_SESSION['pesan'] = 'berhasil update data';
-            header('location: ../setting-jurnal.php?id='.$id_akun);
+            header('location: ../setting-jakun.php?id='.$id_akun);
         }
     }
 
