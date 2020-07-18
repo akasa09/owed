@@ -52,13 +52,13 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
                             </div>
                         </div>
                         <div class="form-group" method="post">
-                            <label>TANGGAL</label>
+                            <label for="dateFilter" class="control-label">TANGGAL</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <i class="fas fa-calendar-alt"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="tanggal" placeholder="tahun bulan tanggal">
+                                    <input type="date" class="form-control" name="tanggal"">
                                 </div>
                             </div>
                         </div>

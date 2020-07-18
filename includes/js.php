@@ -25,6 +25,8 @@
 <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- date time picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 <!-- daterangepicker -->
 <script src="plugins/moment/moment.min.js"></script>
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
@@ -60,6 +62,11 @@
 <!-- datepicker -->
 <script type="text/javascript">
     $(function(){
+        $(".datepicker").datepicker({
+            format: "YYYY-MM-DD",    
+            useCurrent: false
+        })
+
         $("#filterDate").daterangepicker({
             autoUpdateInput: false,
             locale: {

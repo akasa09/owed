@@ -43,18 +43,29 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
                     <br><br>
                     <form role="form" method="POST" action="logic/create-kaskeluar.php">
                         <div class="form-group" method="post">
+                            <label>NO TRANSAKSI</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-unlock-alt"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="idkas" placeholder="masukan id kas masuk">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" method="post">
                             <label>TANGGAL</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <i class="fas fa-calendar-alt"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="tanggal" placeholder="tahun bulan tanggal">
+                                    <input type="date" class="form-control" name="tanggal" placeholder="tahun bulan tanggal">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" method="post">
-                            <label>KETERANGAN</label>
+                            <label>PILIH AKUN</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
