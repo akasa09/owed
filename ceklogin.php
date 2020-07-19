@@ -15,5 +15,5 @@ if ($result->num_rows > 0) {
     $_SESSION['login_user'] = $username;
     header('location:homeadmin.php');
 } else {
-    header('location:salahlogin.php');
+    header('location:index.php');
 }

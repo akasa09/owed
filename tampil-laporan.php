@@ -73,7 +73,7 @@ elseif (isset($_GET['akun']) && $_GET['akun'] !== '')
                     </button>
                 </div>
                 <div class="modal-body">
-                <form action="tampil-laporan.php" method="get">
+                <form id="search-date" action="tampil-laporan.php" method="get">
                     <div class="form-group">
                         <label for="dateFilter" class="control-label">Filter Tanggal</label>
                         <div class="input-group">
@@ -114,7 +114,7 @@ elseif (isset($_GET['akun']) && $_GET['akun'] !== '')
                 </button>
                 </div>
                 <div class="modal-body">
-                <form action="tampil-laporan.php" method="get">
+                <form id="search-akun" action="tampil-laporan.php" method="get">
                     <div class="form-group">
                         <label for="akunFilter" class="control-label">Filter Nama Akun</label>
                         <div class="col-sm-8">
