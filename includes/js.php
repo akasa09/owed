@@ -40,6 +40,8 @@
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script>
@@ -78,8 +80,11 @@
             $("#start").val(picker.startDate.format('YYYY-MM-DD'));
             $("#end").val(picker.endDate.format('YYYY-MM-DD'));
         });
+
+        $("#selectakun").select2({
+            // dropdownParent: $('#modal-search-akun')
+        });
     })
 </script>
 </body>
-
 </html>

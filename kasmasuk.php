@@ -69,7 +69,7 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
                                     <div class="input-group-text">
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
-                                    <select name="keterangan" id="" class="form-control">
+                                    <select name="keterangan" id="selectakun" class="form-control">
                                     <?php
                                         while ($row = mysqli_fetch_array($hasil)) {
                                             echo "
