@@ -22,7 +22,6 @@ $hasil = mysqli_query($koneksi_db, $ambildata);
                 <th>KETERANGAN</th>
                 <th>DEBIT</th>
                 <th>KREDIT</th>
-                <th>SALDO</th>
             </tr>
         </thead>
         <?php

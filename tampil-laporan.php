@@ -186,6 +186,7 @@ elseif (isset($_GET['akun']) && $_GET['akun'] !== '')
             </div>
             <a href="logic/export-excel.php">
             <button class="btn btn-success col-sm-2 float-right">Export Excel</button>
+            <button class="btn btn-primary disabled" onclick="window.print()">Print this page</button>
             </a>
         </div>
     </div>
